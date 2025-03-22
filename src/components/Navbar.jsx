@@ -12,7 +12,7 @@ const Navbar = () => {
         <img className="logo" src={logo} alt="feedback" />
         <div className="nav">
           <div className="nav-links">
-          <h1 className="hed">Welcome to Real-time Feedback</h1>
+          <h1 className="hed">Welcome to Real-time Feedback Platform</h1>
             <Link to="/">Home</Link>
             <Link to="/dashboard">Dashboard</Link>
           </div>
