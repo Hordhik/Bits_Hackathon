@@ -1,0 +1,15 @@
+.event-container {
+  padding: 20px;
+}
+
+.feedback-list {
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.feedback {
+  background: #f4f4f4;
+  margin: 5px 0;
+  padding: 8px;
+}
