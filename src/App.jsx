@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import EventPage from "./pages/EventPage";
 import React from "react";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/event/:eventId" element={<EventPage />} />
+        <Route path="/dashboard" element={<AdminDashboard />} />
+
       </Routes>
     </>
   );
