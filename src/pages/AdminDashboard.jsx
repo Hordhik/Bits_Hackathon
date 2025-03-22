@@ -12,7 +12,7 @@ const AdminDashboard = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="admin">
       <h2>Admin Dashboard</h2>
       <table>
         <thead>
