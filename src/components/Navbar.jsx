@@ -7,11 +7,15 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="container">
         <img className="logo" src ="../images/feedback_logo.avif" alt="feedback" />
-        <div className="nav-links">
+        <div>
+           <div className="nav-links">
           <Link to="/">Home</Link>
           <Link to="/dashboard">Dashboard</Link>
           <Link to="">Events</Link>
         </div>
+        </div>
+        
+
       </div>
     </nav>
   );
