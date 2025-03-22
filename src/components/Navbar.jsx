@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import React from "react";
+<<<<<<< HEAD
 import logo from "/images/feedback_logo.avif";
+=======
+import "../styles/navbar.css";
+>>>>>>> 8484dbb (updated adim dashbord)
 
 const Navbar = () => {
   return (

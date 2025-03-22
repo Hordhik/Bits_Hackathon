@@ -14,7 +14,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/event/:eventId" element={<EventPage />} />
         <Route path="/dashboard" element={<AdminDashboard />} />
-
       </Routes>
     </>
   );

@@ -1,19 +1,22 @@
 /* src/styles/admin.css */
-.container {
+.admin {
     padding: 20px;
-  }
-  
-  table {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+table {
     width: 100%;
     border-collapse: collapse;
-  }
-  
-  th, td {
+}
+
+th, td {
     border: 1px solid #ddd;
     padding: 8px;
-  }
-  
-  th {
+}
+
+th {
     background: #f4f4f4;
-  }
+}
   
