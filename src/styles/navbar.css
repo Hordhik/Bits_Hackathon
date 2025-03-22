@@ -3,6 +3,7 @@
   color: white;
   padding: 10px 20px;
   display: flex;
+  border-radius: 10px;
   justify-content: space-between;
 }
 
@@ -10,4 +11,16 @@
   color: white;
   margin: 0 10px;
   text-decoration: none;
+}
+
+.logo{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
