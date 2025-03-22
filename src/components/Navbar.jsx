@@ -13,6 +13,7 @@ const Navbar = () => {
             <Link to="/dashboard">Dashboard</Link>
           </div>
           <div className="nav_end">
+            <i className="fa-solid fa-bell nav_icons"></i>
             <i className="fa-solid fa-user nav_icons"></i>
           </div>
         </div>
