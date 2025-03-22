@@ -1,15 +1,15 @@
 .navbar {
   background-color: #333;
   color: white;
-  padding: 10px 20px;
+  margin : 10px;
   display: flex;
   border-radius: 10px;
   justify-content: space-between;
 }
 
-.nav-links a {
+.nav-links a{
   color: white;
-  margin: 15px;;
+  margin-left: 15px;
   text-decoration: none;
 }
 

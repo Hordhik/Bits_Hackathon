@@ -8,10 +8,9 @@ const Navbar = () => {
       <div className="container">
         <img className="logo" src ="../images/feedback_logo.avif" alt="feedback" />
         <div>
-           <div className="nav-links">
+        <div className="nav-links">
           <Link to="/">Home</Link>
           <Link to="/dashboard">Dashboard</Link>
-          <Link to="">Events</Link>
         </div>
         </div>
         
