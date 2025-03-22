@@ -1,16 +1,17 @@
-// src/components/FeedbackForm.jsx
-import { useState, useContext } from "react";
-import { SocketContext } from "../context/SocketContext";
+import { useState } from "react";
+import { useSocket } from "../context/SocketContext";
 import "../styles/feedback.css";
 
-const FeedbackForm = ({ eventId }) => {
+const FeedbackForm = ({ eventId, addFeedback }) => {
   const [message, setMessage] = useState("");
-  const socket = useContext(SocketContext);
+  const socket = useSocket();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (message.trim()) {
-      socket.emit("sendFeedback", { eventId, message });
+      const feedbackData = { eventId, message };
+      socket.emit("sendFeedback", feedbackData);
+      addFeedback(message); // Add feedback instantly
       setMessage("");
     }
   };

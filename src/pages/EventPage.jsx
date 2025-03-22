@@ -1,47 +1,50 @@
-// src/pages/EventPage.jsx
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
-import io from "socket.io-client";
-
-const socket = io("http://localhost:5000"); // Connect to backend
+import { useSocket } from "../context/SocketContext";
+import FeedbackList from "../components/FeedbackList";
+import FeedbackForm from "../components/FeedbackForm";
+import "../styles/event.css"; // Ensure CSS is imported
 
 const EventPage = () => {
   const { eventId } = useParams();
-  const [feedback, setFeedback] = useState("");
-  const [messages, setMessages] = useState([]);
+  const socket = useSocket(); // Use SocketContext
+  const [feedbacks, setFeedbacks] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const eventIdRef = useRef(eventId);
 
   useEffect(() => {
+    if (!socket) return; // Ensure socket exists
+
+    eventIdRef.current = eventId;
     socket.emit("joinEvent", eventId);
-    
-    socket.on("newFeedback", (data) => {
-      setMessages((prev) => [...prev, data]);
-    });
 
-    return () => socket.off("newFeedback");
-  }, [eventId]);
+    const handleNewFeedback = (data) => {
+      if (data.eventId === eventIdRef.current) {
+        setFeedbacks((prev) => [data, ...prev]);
+      }
+    };
 
-  const sendFeedback = () => {
-    if (feedback.trim()) {
-      socket.emit("sendFeedback", { eventId, message: feedback });
-      setFeedback("");
-    }
+    socket.on("newFeedback", handleNewFeedback);
+    setLoading(false);
+
+    return () => {
+      socket.off("newFeedback", handleNewFeedback);
+    };
+  }, [eventId, socket]);
+
+  // Function to add feedback instantly
+  const addFeedback = (message) => {
+    const newFeedback = { eventId, message };
+    setFeedbacks((prev) => [newFeedback, ...prev]);
   };
 
   return (
     <div className="event-container">
       <h2>Event: {eventId}</h2>
-      <div className="feedback-list">
-        {messages.map((msg, index) => (
-          <div key={index} className="feedback">{msg.message}</div>
-        ))}
-      </div>
-      <input
-        type="text"
-        placeholder="Write your feedback..."
-        value={feedback}
-        onChange={(e) => setFeedback(e.target.value)}
-      />
-      <button onClick={sendFeedback}>Send Feedback</button>
+
+      {loading ? <p>Loading feedback...</p> : <FeedbackList feedbacks={feedbacks} />}
+      
+      <FeedbackForm eventId={eventId} addFeedback={addFeedback} />
     </div>
   );
 };
