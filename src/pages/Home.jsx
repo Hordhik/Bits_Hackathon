@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/home.css"; // Import CSS file
+import "../styles/home.css"; // Import the updated CSS file
 
 const Home = () => {
   const [eventName, setEventName] = useState("");
@@ -43,31 +43,64 @@ const Home = () => {
   };
 
   return (
-    <div className="home-container">
-      <h1 className="home-title">Real-Time Feedback</h1>
+    <div className="container">
+      {/* Left Side - Event Creation and Joining */}
+      <div className="home-container">
+        <h1 className="home-title">Real-Time Feedback</h1>
 
-      {/* Create Event Section */}
-      <div className="home-section">
-        <h2>Create an Event</h2>
-        <input
-          type="text"
-          placeholder="Enter event name"
-          value={eventName}
-          onChange={(e) => setEventName(e.target.value)}
-        />
-        <button className="btn" onClick={handleCreateEvent}>Create Event</button>
+        {/* Create Event Section */}
+        <div className="home-section">
+          <h2>Create an Event</h2>
+          <input
+            type="text"
+            placeholder="Enter event name"
+            value={eventName}
+            onChange={(e) => setEventName(e.target.value)}
+          />
+          <button className="btn" onClick={handleCreateEvent}>Create Event</button>
+        </div>
+
+        {/* Join Event Section */}
+        <div className="home-section">
+          <h2>Join an Event</h2>
+          <input
+            type="text"
+            placeholder="Enter event code"
+            value={eventCode}
+            onChange={(e) => setEventCode(e.target.value)}
+          />
+          <button className="btn" onClick={handleJoinEvent}>Join Event</button>
+        </div>
       </div>
 
-      {/* Join Event Section */}
-      <div className="home-section">
-        <h2>Join an Event</h2>
-        <input
-          type="text"
-          placeholder="Enter event code"
-          value={eventCode}
-          onChange={(e) => setEventCode(e.target.value)}
-        />
-        <button className="btn" onClick={handleJoinEvent}>Join Event</button>
+      {/* Right Side - Feedback Section */}
+      <div className="feedback-container">
+        <h2 className="feedback-title">Attendee Experiences</h2>
+
+        {/* Sample Feedback Entries */}
+        <div className="feedback-box">
+          <p className="event-name">Tech Innovators Summit 2025</p>
+          <p className="user-name">John Doe</p>
+          <p className="feedback-text">
+            "A fantastic event filled with insightful discussions and networking opportunities. The keynote speakers were inspiring, and the panel discussions provided deep industry insights."
+          </p>
+        </div>
+
+        <div className="feedback-box">
+          <p className="event-name">Startup Growth Conference</p>
+          <p className="user-name">Sarah Lee</p>
+          <p className="feedback-text">
+            "Loved the energy and enthusiasm! It was amazing to connect with like-minded entrepreneurs and learn strategies to scale startups effectively."
+          </p>
+        </div>
+
+        <div className="feedback-box">
+          <p className="event-name">AI & Data Science Forum</p>
+          <p className="user-name">Michael Smith</p>
+          <p className="feedback-text">
+            "Great event with engaging workshops and hands-on sessions. The practical insights on AI advancements were extremely valuable for my research."
+          </p>
+        </div>
       </div>
     </div>
   );

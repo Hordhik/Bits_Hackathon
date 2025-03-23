@@ -1,16 +1,22 @@
-
+/* Navbar Styling */
 .navbar {
-  background-color: #333;
-  color: white;
-  padding: 10px;
-  margin: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2f2e2e;
+  padding: 12px 20px;
+  color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 70px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 99vw;
+  width: calc(100% - 20px);
+  margin: 10px auto;
 }
 
+/* Navbar Container */
 .container {
   display: flex;
   justify-content: space-between;
@@ -18,36 +24,45 @@
   width: 100%;
 }
 
+/* Logo Styling */
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
 .logo {
   height: 50px;
   width: 50px;
   border-radius: 50%;
   cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-.nav {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+.logo:hover {
+  transform: scale(1.1);
 }
 
+/* Navigation Links */
 .nav-links {
   display: flex;
-  justify-content: start;
   gap: 20px;
 }
 
 .nav-links a {
-  color: white;
+  color: #ffffff;
   text-decoration: none;
   font-size: 16px;
-  transition: color 0.3s ease-in-out;
+  font-weight: 600;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .nav-links a:hover {
+  text-decoration: underline;
   color: #00c3ff;
+  transform: translateY(-2px);
 }
 
+/* Right-Side Icons */
 .nav_end {
   display: flex;
   align-items: center;
@@ -57,17 +72,33 @@
   font-size: 20px;
   color: #ffffff;
   cursor: pointer;
-  margin-right:20px;
-  transition: color 0.3s ease-in-out;
+  margin-right: 20px;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .nav_icons:hover {
   color: #00c3ff;
+  transform: scale(1.2);
 }
+
+/* Header Title */
 .hed {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  margin: auto;
-  margin-right: 340px;
+  flex-grow: 1;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
+
+/* General Improvements */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+}
+
+.navbar, .nav-links a, .nav_icons {
+  transition: all 0.3s ease;
 }
