@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { fetchEvents } from "../api/events";
 
 function AdminDashboard() {
   const [events, setEvents] = useState([]);
