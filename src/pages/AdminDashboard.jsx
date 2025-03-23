@@ -1,64 +1,29 @@
-import React, { useEffect, useState } from "react";
-import "../styles/admin.css";
+import { useEffect, useState } from "react";
+import { fetchEvents } from "../api/events";
 
-const AdminDashboard = () => {
+function AdminDashboard() {
   const [events, setEvents] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        const response = await fetch("http://localhost:5000/api/events");
-        const data = await response.json();
-
-        if (response.ok) {
-          setEvents(data);
-        } else {
-          setError("Failed to load events.");
-        }
-      } catch (err) {
-        setError("Error fetching data. Please try again later.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchEvents();
+    fetchEvents()
+      .then(setEvents)
+      .catch(() => alert("Error fetching events"));
   }, []);
 
   return (
-    <div className="admin-dashboard">
-      <h1 className="dashboard-title">Admin Dashboard</h1>
-
-      {loading ? (
-        <p className="loading-text">Loading events...</p>
-      ) : error ? (
-        <p className="error-text">{error}</p>
-      ) : events.length === 0 ? (
-        <p className="no-data">No events available.</p>
+    <div>
+      <h1>Admin Dashboard</h1>
+      {events.length ? (
+        <ul>
+          {events.map((event) => (
+            <li key={event._id}>{event.title} - {event.description}</li>
+          ))}
+        </ul>
       ) : (
-        <div className="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th>Event Name</th>
-                <th>Feedback Count</th>
-              </tr>
-            </thead>
-            <tbody>
-              {events.map((event) => (
-                <tr key={event.id}>
-                  <td>{event.name}</td>
-                  <td>{event.feedbackCount}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <p>No events available</p>
       )}
     </div>
   );
-};
+}
 
 export default AdminDashboard;
