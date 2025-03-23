@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import React from "react";
 import logo from "/images/feedback_logo.avif";
-import "../styles/home.css";
 
 const Navbar = () => {
   return (
